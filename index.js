@@ -8,6 +8,7 @@ app.use(express.urlencoded({extended:true}))
 app.use(express.static('static'));
 
 // 1) Get the categories mentioned in all the jobs and how many times each category was mentioned
+//Example path I used to test that it was working: localhost/jobCategories
 app.get('/jobCategories', (req, res) => {
     let count = {};
 
@@ -25,6 +26,7 @@ app.get('/jobCategories', (req, res) => {
     res.send(JSON.stringify(count));
 })
 // 3) Get all jobs in a given city (sent in the querystring)
+//Example path I used to test that it was working: localhost/checkJobsInCity?cityName=New York
 app.get('/checkJobsInCity', (req,res)=> {
     //An array to hold the jobs from the given city
     let jobsInCity = []; 
@@ -47,6 +49,7 @@ app.get('/checkJobsInCity', (req,res)=> {
 });
 
 // 2) Get all the jobs with a given category (sent as a parameter)
+//Example path I used to test that it was working: localhost/python
 app.get('/:category', (req, res) => {
     let jobs = {};
 
@@ -60,7 +63,5 @@ app.get('/:category', (req, res) => {
 
     res.send(jobs);
 })
-
-
 
 app.listen(80); 
